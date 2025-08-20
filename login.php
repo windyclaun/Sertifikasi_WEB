@@ -4,11 +4,12 @@ require_once "db.php";
 
 $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login"])) {
     $username = trim($_POST["username"]);
     $password = trim($_POST["password"]);
 
     if (!empty($username) && !empty($password)) {
+        // ambil user berdasarkan username
         $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -16,6 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($res->num_rows === 1) {
             $row = $res->fetch_assoc();
+
+            // cek hash password
             if (password_verify($password, $row["password"])) {
                 $_SESSION["username"] = $row["username"];
                 header("Location: index.php");
@@ -52,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label>Password</label>
                 <input type="password" name="password" class="form-control" required>
             </div>
-            <button class="btn btn-danger w-100">Login</button>
+            <button class="btn btn-danger w-100" type="submit" name="login">Login</button>
         </form>
         <p class="text-center mt-3">Belum punya akun? <a href="register.php">Register</a></p>
     </div>
