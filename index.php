@@ -467,7 +467,7 @@ require_once 'db.php';
 
                 <!-- Form Kontak -->
                 <div class="col-md-7">
-                    <form action="db.php" method="POST">
+                    <form action="kontak_db.php" method="POST">
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama</label>
                             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Anda">
