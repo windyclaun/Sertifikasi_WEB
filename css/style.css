@@ -1,0 +1,107 @@
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fffafc;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            background-color: #e91e63;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: #f6f6f6 !important;
+        }
+
+        .nav-link {
+            color: #000000 !important;
+        }
+
+        .nav-link:hover {
+            color: #e91e63 !important;
+        }
+
+        .btn-glow {
+            background: #e91e63;
+            color: #fff;
+            border-radius: 30px;
+            padding: 8px 20px;
+        }
+
+        .btn-glow:hover {
+            background: #d81b60;
+            color: #fff;
+        }
+
+        .hero {
+            background: url('../assets/bg.jpg') center/cover no-repeat;
+            color: #e91e63;
+            text-align: center;
+            padding: 150px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .about img {
+            border-radius: 15px;
+        }
+
+        .produk .card {
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .produk .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimoni {
+            background-color: #fce4ec;
+        }
+
+        .gallery img {
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #e91e63;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
