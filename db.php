@@ -1,5 +1,4 @@
 <?php
-// KONEKSI
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -10,13 +9,10 @@ if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-
-
-// FUNGSI AMBIL TESTIMONI
-function getTestimoni($limit = 6) {
-    global $conn;
-    $limit = (int)$limit;
-    $sql = "SELECT nama, peran, pesan, created_at FROM kontak ORDER BY created_at DESC LIMIT $limit";
-    return $conn->query($sql);
-}
+// function getTestimoni($limit = 6) {
+//     global $conn;
+//     $limit = (int)$limit;
+//     $sql = "SELECT nama, peran, pesan, created_at FROM kontak ORDER BY created_at DESC LIMIT $limit";
+//     return $conn->query($sql);
+// }
 ?>

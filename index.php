@@ -5,6 +5,7 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 require_once 'db.php';
+require_once 'kontak_db.php';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -226,7 +227,7 @@ require_once 'db.php';
     </section>
 
     <!-- Testimoni -->
-    <section id="testimoni" class="py-5" style="background-color:#f8f9fa;">
+    <section id="testimoni" class="py-5" style="background-color: #fce4ec;">
         <div class="container">
             <h2 class="text-center mb-5">Apa Kata Mereka?</h2>
             <div class="row">

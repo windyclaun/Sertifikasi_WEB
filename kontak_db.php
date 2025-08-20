@@ -22,4 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 }
+
+function getTestimoni($limit = 6) {
+    global $conn;
+    $limit = (int)$limit;
+    $sql = "SELECT nama, peran, pesan, created_at FROM kontak ORDER BY created_at DESC LIMIT $limit";
+    return $conn->query($sql);
+}
 ?>
