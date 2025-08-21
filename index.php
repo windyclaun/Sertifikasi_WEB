@@ -230,23 +230,43 @@ require_once 'kontak_db.php';
     <section id="testimoni" class="py-5" style="background-color: #fce4ec;">
         <div class="container">
             <h2 class="text-center mb-5">Apa Kata Mereka?</h2>
-            <div class="row">
-                <?php
-                $testi = getTestimoni();
-                if ($testi && $testi->num_rows > 0) {
+            <?php
+            $testi = getTestimoni();
+            if ($testi && $testi->num_rows > 0) {
+            ?>
+            <div id="testimoniCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <?php
+                    $active = 'active';
                     while ($row = $testi->fetch_assoc()) {
-                        echo '<div class="col-md-4 mb-4">
-                      <blockquote class="p-3 bg-white rounded shadow-sm h-100">
-                          "' . htmlspecialchars($row["pesan"]) . '"
-                          <footer class="mt-2">- ' . htmlspecialchars($row["nama"]) . ', ' . htmlspecialchars($row["peran"]) . '</footer>
-                      </blockquote>
-                    </div>';
+                        echo '<div class="carousel-item '.$active.'">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8">
+                                        <blockquote class="p-4 bg-white rounded shadow-sm text-center">
+                                            <p class="mb-3" style="font-size:1.2rem;">"'.htmlspecialchars($row["pesan"]).'"</p>
+                                            <footer class="mt-2 fw-bold" style="color: #fff;">- '.htmlspecialchars($row["nama"]).', '.htmlspecialchars($row["peran"]).'</footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                              </div>';
+                        $active = '';
                     }
-                } else {
-                    echo '<p class="text-center">Belum ada testimoni.</p>';
-                }
-                ?>
+                    ?>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimoniCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Sebelumnya</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimoniCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Berikutnya</span>
+                </button>
             </div>
+            <?php
+            } else {
+                echo '<p class="text-center">Belum ada testimoni.</p>';
+            }
+            ?>
         </div>
     </section>
 
@@ -298,7 +318,7 @@ require_once 'kontak_db.php';
                             <p class="card-text">Cara alami menjaga kulit tetap sehat, glowing, dan bebas masalah.</p>
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuTips" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Baca Selengkapnya
+                                    Lihat Artikel
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuTips">
                                     <li>
@@ -329,7 +349,7 @@ require_once 'kontak_db.php';
                             <p class="card-text">Serum vitamin C GloWin membantu kulit cerah bercahaya.</p>
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuSerum" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Baca Selengkapnya
+                                    Lihat Artikel
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuSerum">
                                     <li>
@@ -360,7 +380,7 @@ require_once 'kontak_db.php';
                             <p class="card-text">Makeup premium dengan warna natural dan tahan lama.</p>
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuMakeup" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Baca Selengkapnya
+                                    Lihat Artikel
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuMakeup">
                                     <li>
@@ -468,7 +488,7 @@ require_once 'kontak_db.php';
 
                 <!-- Form Kontak -->
                 <div class="col-md-7">
-                    <form action="kontak_db.php" method="POST">
+                    <form action="kontak_db.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama</label>
                             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Anda">
@@ -493,9 +513,12 @@ require_once 'kontak_db.php';
                             <textarea class="form-control" id="pesan" name="pesan" rows="4" placeholder="Pesan Anda"></textarea>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="gambar" class="form-label">Gambar Pendukung Testimoni</label>
+                            <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
+                        </div>
                         <button type="submit" class="btn btn-glow">Kirim</button>
                     </form>
-
                 </div>
             </div>
         </div>
